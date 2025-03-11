@@ -172,7 +172,7 @@ import path from 'node:path'
 import os from 'node:os'
 import { fileURLToPath } from 'node:url'
 import { scheduleNotification } from './background.js'
-import AutoLaunch from 'electron-auto-launch' // إضافة مكتبة AutoLaunch
+import AutoLaunch from 'electron-auto-launch/dist/index.js'
 
 const platform = process.platform || os.platform()
 const currentDir = fileURLToPath(new URL('.', import.meta.url))
@@ -235,7 +235,9 @@ async function createWindow() {
 app.whenReady().then(() => {
   createWindow()
 
-  tray = new Tray(path.resolve(currentDir, 'icons/icon.png'))
+  const iconPath = 'd:\\document\\github\\Quasar-Alarm-App\\alarm\\src-electron\\icon.png'
+  // const iconPath = path.resolve(currentDir, 'icons/icon.png')
+  tray = new Tray(iconPath)
   const contextMenu = Menu.buildFromTemplate([
     {
       label: 'Show App',
